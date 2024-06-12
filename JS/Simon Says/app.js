@@ -1,5 +1,6 @@
 let gameSeq = [];
 let userSeq = [];
+let arr = [];
 
 let btns = ["yellow", "red", "purple", "green"];
 
@@ -43,13 +44,20 @@ function levelUp() {
   console.log(gameSeq);
   gameFlash(randBtn);
 }
-
+let max = -1;
 function checkAns(idx) {
   if (userSeq[idx] === gameSeq[idx]) {
     if (userSeq.length == gameSeq.length) {
       setTimeout(levelUp, 1000);
     }
   } else {
+     arr.push(level);
+
+    for (i = 0; i < arr.length; i++) {
+      if (max < arr[i]) {
+        max = arr[i];
+      }
+    }
     h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key to start.`;
     document.querySelector("body").style.backgroundColor = "red";
     setTimeout(function () {
