@@ -1,0 +1,80 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Forte regular";
+}
+@keyframes flashAnimation {
+  from {
+    background-color: antiquewhite;
+  }
+  to {
+    background-color: antiquewhite;
+  }
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 50px;
+  background-color: antiquewhite;
+}
+.gameContainer {
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+#rBox1 {
+  border-top-left-radius: 100%;
+  background-color: red;
+}
+#rBox2 {
+  border-top-right-radius: 100%;
+  background-color: blue;
+}
+#rBox3 {
+  border-bottom-left-radius: 100%;
+  background-color: yellow;
+}
+#rBox4 {
+  border-bottom-right-radius: 100%;
+  background-color: green;
+}
+.flash {
+  animation-name: flashAnimation;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+}
+.disable {
+  display: none;
+}
+#reset {
+  padding: 10px;
+  font-family: Cambria;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, red, orange);
+}
+.red {
+  animation-name: redBg;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+@keyframes redBg {
+  from {
+    background-color: rgba(255, 0, 0, 0.75);
+  }
+  to {
+    background-color: antiquewhite;
+  }
+}
