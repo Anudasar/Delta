@@ -102,7 +102,7 @@ app.get("/user/new", (req, res) => {
   res.render("new.ejs");
 });
 
-app.post("/user/new", (req, res) => {
+app.post("/user", (req, res) => {
   let { username, email, password } = req.body;
   let id = uuidv4();
   //Query to Insert New User
