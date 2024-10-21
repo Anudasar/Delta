@@ -102,21 +102,25 @@ app.get("/user/new", (req, res) => {
   res.render("new.ejs");
 });
 
-app.post("/user/new", (req, res) => {
-  let { username, email, password } = req.body;
-  let id = uuidv4();
-  //Query to Insert New User
-  let q = `INSERT INTO user (id, username, email, password) VALUES ('${id}','${username}','${email}','${password}') `;
+app.post("/user/new",(req,res)=>{
+    const id = faker.string.uuid();
 
-  try {
-    connection.query(q, (err, result) => {
-      if (err) throw err;
-      console.log("added new user");
-      res.redirect("/user");
-    });
-  } catch (err) {
-    res.send("some error occurred");
-  }
+    let {username,email,password}=req.body;
+    console.log(req.body);
+
+    let q = `INSERT INTO user (id, username, email, password) VALUES (?, ?, ?, ?)`;
+    try {
+        connection.query(q, [id, username, email, password],(err, result) => {
+            if (err) throw err;
+            console.log("added new user");
+            res.redirect("/user")
+            
+            }
+        );}catch (err) {
+            console.log(err);
+            res.send("some error in Db");
+    
+    }
 });
 
 app.get("/user/:id/delete", (req, res) => {
