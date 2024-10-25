@@ -119,7 +119,7 @@ app.post("/user/new", (req, res) => {
   }
 });
 
-app.get("/user/:id/delete", (req, res) => {
+app.post("/user/:id/delete", (req, res) => {
   let { id } = req.params;
   let q = `SELECT * FROM user WHERE id='${id}'`;
 
