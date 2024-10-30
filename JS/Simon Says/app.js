@@ -1,5 +1,8 @@
 let gameSeq = [];
 let userSeq = [];
+//new
+let highScore = 0;
+
 
 let btns = ["yellow", "red", "purple", "green"];
 
@@ -7,6 +10,7 @@ let started = false;
 let level = 0;
 
 let h2 = document.querySelector("h2");
+let highScoreDisplay = document.querySelector(".highscore");
 
 document.addEventListener("keypress", function () {
   if (started == false) {
@@ -42,6 +46,17 @@ function levelUp() {
   gameSeq.push(randColor);
   console.log(gameSeq);
   gameFlash(randBtn);
+  //new
+  resetHint();
+}
+//new
+function gameScoreDisplay(){
+    if (level === 0){
+        h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key to start. `;
+    }else{
+        h2.innerHTML = `Game Over! Your score was <b>${level-1}</b> <br> Press any key to start. `;
+    }
+
 }
 
 function checkAns(idx) {
@@ -50,12 +65,19 @@ function checkAns(idx) {
       setTimeout(levelUp, 1000);
     }
   } else {
-    h2.innerHTML = `Game Over! Your score was <b>${level}</b> <br> Press any key to start.`;
+    gameScoreDisplay();
     document.querySelector("body").style.backgroundColor = "red";
     setTimeout(function () {
       document.querySelector("body").style.backgroundColor = "white";
     }, 150);
+     if (level-1 > highScore){
+            highScore = level-1;
+            highScoreDisplay.innerHTML = `<h1> <b> High Score: ${highScore} </b> </h1>`;
+            
+        }
+    
     reset();
+    resetHint();
   }
 }
 
@@ -80,3 +102,13 @@ function reset() {
   userSeq = [];
   level = 0;
 }
+//new
+function resetHint(){
+    hintBox.innerHTML="";
+}
+
+let hintBtn = document.querySelector(".hint");
+let hintBox = document.querySelector(".hintBox");
+hintBtn.addEventListener("click",function(){
+    hintBox.innerHTML=`${gameSeq}`
+});
