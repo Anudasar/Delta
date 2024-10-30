@@ -38,3 +38,35 @@ body {
 .userflash {
   background-color: green;
 }
+/* new */
+.highscore{
+    height: 50px;
+    width: 300px;
+    /* border: 1px solid black; */
+    border-radius:25%;
+    margin: auto;
+    padding:auto;
+}
+
+.hintMain{
+    display:flex;
+    justify-content:center;
+    width:100px;
+    height:50px;
+}
+
+.hint{
+    background-color: yellow;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin:auto;
+    padding: auto;
+    cursor: pointer;
+}
+
+.hintBox{
+    margin:auto;
+    /* padding: auto; */
+    width:60px;
+}
